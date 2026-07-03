@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BodyReset - Premium EMS Training</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="BodyReset: l'allenamento EMS privato, ingegnerizzato sui tuoi dati clinici. Rimodella il tuo fisico in soli 20 minuti a settimana.">
+    <meta name="keywords" content="EMS training, allenamento EMS, BodyReset, palestra Francavilla al Mare, personal trainer, fitness 20 minuti">
+    <meta name="author" content="BodyReset">
+    <meta property="og:title" content="BodyReset - Premium EMS Training">
+    <meta property="og:description" content="Il Tuo Corpo Migliore di Sempre. In soli 20 Minuti a Settimana. Prenota la tua Analisi BIA + Prova.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Outfit (Titoli) e Inter (Paragrafi) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Configurazione Tailwind Personalizzata -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0D0D0E',
+                            card: '#161618',
+                            purple: '#4B2E83',
+                            purpleLight: '#1d123a',
+                            cyan: '#745399',
+                            cyanDark: '#5A4077'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(116,83,153,0.2), 0 0 10px rgba(116,83,153,0.1)' },
+                            '100%': { boxShadow: '0 0 20px rgba(116,83,153,0.6), 0 0 35px rgba(116,83,153,0.3)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar matching the dark/cyan premium aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0D0D0E;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4B2E83;
+        }
+
+        /* Custom styles for accordion transition */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #745399;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-brand-dark text-gray-300 font-body antialiased selection:bg-brand-cyan selection:text-brand-dark min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- Navbar Minimalista -->
+    <header id="main-header" class="w-full py-6 px-6 lg:px-12 flex justify-between items-center z-50 fixed top-0 left-0 transition-all duration-500 bg-transparent">
+        <a href="/" class="flex items-center shrink-0">
+            <!-- Inserisci l'immagine del logo nella cartella "assets" creata e rinominala (es. logo.png) o cambia il nome qui sotto -->
+            <img id="header-logo" src="assets/logo1.png" alt="BodyReset Logo"
+                class="h-10 sm:h-12 lg:h-12 w-auto object-contain transform scale-[2.5] lg:scale-[3] origin-left transition-all duration-500">
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center gap-8">
+            <a href="#problema" class="text-sm font-medium text-gray-400 hover:text-white transition">Il Problema</a>
+            <a href="#metodo" class="text-sm font-medium text-gray-400 hover:text-white transition">Il Metodo</a>
+            <a href="#offerta" class="text-sm font-medium text-gray-400 hover:text-white transition">L'Offerta</a>
+            <a href="#faq" class="text-sm font-medium text-gray-400 hover:text-white transition">FAQ</a>
+        </nav>
+
+        <div class="hidden lg:block">
+            <a href="#offerta"
+                class="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg border border-white/10 transition-all duration-300">
+                Fissa la Prova
+            </a>
+        </div>
+
+        <!-- Mobile Menu Icon -->
+        <button id="mobile-menu-btn" class="lg:hidden text-white hover:text-brand-cyan transition focus:outline-none"
+            aria-label="Apri menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-brand-dark/95 backdrop-blur-lg z-40 flex flex-col justify-center items-center gap-8 transition-all duration-500 transform translate-x-full lg:hidden">
+        <a href="#problema"
+            class="mobile-nav-link text-2xl font-heading font-bold text-white hover:text-brand-cyan transition">Il
+            Problema</a>
+        <a href="#metodo"
+            class="mobile-nav-link text-2xl font-heading font-bold text-white hover:text-brand-cyan transition">Il
+            Metodo</a>
+        <a href="#offerta"
+            class="mobile-nav-link text-2xl font-heading font-bold text-white hover:text-brand-cyan transition">L'Offerta</a>
+        <a href="#faq"
+            class="mobile-nav-link text-2xl font-heading font-bold text-white hover:text-brand-cyan transition">FAQ</a>
+        <a href="#offerta"
+            class="mobile-nav-link mt-4 px-8 py-3.5 bg-brand-cyan text-white font-heading font-extrabold text-sm tracking-wide uppercase rounded-xl shadow-[0_0_15px_rgba(116,83,153,0.4)]">
+            Prenota Ora
+        </a>
+    </div>
+
+    <main class="relative w-full flex flex-col">
+        <!-- Glow Decorativi in Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+            <div
+                class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-brand-purple rounded-full mix-blend-screen filter blur-[150px] opacity-25 animate-pulse-slow">
+            </div>
+            <div
+                class="absolute top-1/4 right-0 w-[500px] h-[500px] bg-brand-cyan rounded-full mix-blend-screen filter blur-[150px] opacity-10">
+            </div>
+            <div
+                class="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-brand-purple/40 rounded-full mix-blend-screen filter blur-[150px] opacity-15">
+            </div>
+        </div>
+
+        <!-- Sezione 1: HERO -->
+        <section class="min-h-screen flex items-center pt-40 pb-20 lg:pt-40 lg:pb-12">
+            <div
+                class="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+                <!-- Colonna Sinistra -->
+                <div class="flex flex-col justify-center text-center lg:text-left z-10">
+                    <span
+                        class="inline-block py-2 px-4 rounded-2xl bg-white/5 border border-white/10 text-brand-cyan font-heading font-semibold text-xs tracking-[0.2em] uppercase mb-8 mx-auto lg:mx-0 max-w-full backdrop-blur-sm shadow-sm">
+                        Per professionisti e imprenditori che esigono risultati, non scuse
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white leading-[1.1] mb-6">
+                        Il Tuo Corpo Migliore di Sempre.<br class="hidden lg:block" /> In soli <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-brand-cyan">20
+                            Minuti</span> a Settimana.
+                    </h1>
+                    <p
+                        class="text-base sm:text-lg lg:text-xl text-gray-400 font-body font-light leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+                        Dimentica le ore sprecate in palestre affollate. Scopri <span
+                            class="text-white font-medium">BodyReset</span>: l'allenamento EMS privato, ingegnerizzato
+                        sui tuoi dati clinici. Rimodella il tuo fisico, proteggi le articolazioni e riprenditi il tuo
+                        tempo.
+                    </p>
+                    <div class="flex flex-col items-center lg:items-start gap-4">
+                        <a href="#offerta"
+                            class="inline-block text-center px-8 py-4 sm:px-10 sm:py-5 bg-brand-cyan hover:bg-brand-cyanDark text-white font-heading font-extrabold text-sm sm:text-base tracking-wide uppercase rounded-xl shadow-[0_0_20px_rgba(116,83,153,0.35)] hover:shadow-[0_0_35px_rgba(116,83,153,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
+                            Prenota Ora l'Analisi BIA + Prova
+                        </a>
+                        <p class="text-xs text-gray-500 font-body flex items-center gap-2">
+                            <svg class="w-4 h-4 text-brand-cyan flex-shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Meno di 40 minuti di tempo totale speso in studio.
+                        </p>
+                    </div>
+                </div>
+                <!-- Colonna Destra (Visual Dashboard Clinico) -->
+                <div
+                    class="relative w-full aspect-[4/5] sm:aspect-video lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-brand-card to-black p-6 flex flex-col justify-between shadow-2xl group transition-all duration-500 hover:border-brand-cyan/30">
+                    <!-- Sfondo con overlay immagine -->
+                    <div
+                        class="absolute inset-0 bg-[url('assets/home_banner.png')] bg-cover bg-center opacity-25 group-hover:opacity-30 transition-opacity duration-700">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent">
+                    </div>
+
+                    <!-- Header dashboard simulato -->
+                    <div class="relative z-10 flex justify-between items-center w-full">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse"></span>
+                            <span class="text-xs font-heading font-bold text-gray-400 tracking-wider uppercase">BIA
+                                Scanner Active v2.4</span>
+                        </div>
+                        <span
+                            class="text-[10px] font-mono text-brand-cyan/85 bg-brand-cyan/10 border border-brand-cyan/20 px-2 py-0.5 rounded">CONNECTED</span>
+                    </div>
+
+                    <!-- Corpo centrale: Body silhouette & Indicatori clinici -->
+                    <div class="relative z-10 my-auto py-6 flex flex-col items-center justify-center">
+                        <!-- Silhouette Glow Grafico -->
+                        <div class="relative w-28 h-48 sm:w-32 sm:h-56 flex items-center justify-center mb-6">
+                            <!-- SVG Silhouette stilizzata -->
+                            <svg class="w-full h-full text-brand-cyan/40 filter drop-shadow-[0_0_15px_rgba(116,83,153,0.4)]"
+                                viewBox="0 0 100 200" fill="currentColor">
+                                <path
+                                    d="M50 15a10 10 0 1 0-10-10 10 10 0 0 0 10 10zm12 15H38a15 15 0 0 0-15 15v40a5 5 0 0 0 10 0V50h5v140a10 10 0 0 0 20 0v-65h4v65a10 10 0 0 0 20 0V50h5v40a5 5 0 0 0 10 0V45a15 15 0 0 0-15-15z" />
+                            </svg>
+                            <!-- Pulsing target markers -->
+                            <span
+                                class="absolute top-[25%] left-[30%] w-3 h-3 bg-purple-400 rounded-full border border-white animate-ping"></span>
+                            <span
+                                class="absolute top-[50%] right-[32%] w-3 h-3 bg-brand-cyan rounded-full border border-white animate-ping"></span>
+                            <span
+                                class="absolute bottom-[30%] left-[45%] w-3 h-3 bg-brand-cyan rounded-full border border-white animate-ping"
+                                style="animation-delay: 0.5s;"></span>
+                        </div>
+
+                        <!-- Statistica dinamica simulata (BIA Metrics Glass Card) -->
+                        <div
+                            class="w-full max-w-sm grid grid-cols-2 gap-3 backdrop-blur-md bg-white/[0.03] border border-white/10 rounded-2xl p-4">
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Massa
+                                    Muscolare</span>
+                                <span class="text-lg font-heading font-black text-white">+5.4% <span
+                                        class="text-[10px] font-normal text-brand-cyan">▲</span></span>
+                                <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
+                                    <div class="bg-brand-cyan h-full rounded-full w-[78%]"></div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] text-gray-500 font-medium uppercase tracking-wider">Massa
+                                    Grassa (BFP)</span>
+                                <span class="text-lg font-heading font-black text-white">-3.8% <span
+                                        class="text-[10px] font-normal text-purple-400">▼</span></span>
+                                <div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden mt-1.5">
+                                    <div class="bg-purple-400 h-full rounded-full w-[22%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer dashboard: valori tempo reale -->
+                    <div
+                        class="relative z-10 w-full flex justify-between border-t border-white/5 pt-4 text-xs font-mono text-gray-500">
+                        <div>RECLUTAMENTO: <span class="text-white font-bold">300+ MUSCOLI</span></div>
+                        <div>EFFICACIA: <span class="text-brand-cyan font-bold">20 MIN</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 2: IL PROBLEMA -->
+        <section id="problema" class="w-full bg-brand-dark py-28 lg:py-36 px-6 relative">
+            <!-- Linea decorativa di separazione sfumata -->
+            <div
+                class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent">
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span
+                        class="text-purple-400 font-heading font-bold text-xs tracking-[0.2em] uppercase mb-4 block">La
+                        Realtà delle Palestre Comuni</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-white leading-tight">
+                        Il tempo è il tuo unico vero lusso.<br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-brand-cyan">Perché
+                            lo stai sprecando?</span>
+                    </h2>
+                </div>
+
+                <div
+                    class="space-y-8 text-gray-400 font-body text-lg lg:text-xl font-light leading-relaxed text-center md:text-left">
+                    <p>
+                        Quante volte hai pagato un abbonamento annuale in palestra per poi andarci solo tre volte?
+                        Conosciamo la sensazione: arrivi stanco dopo il lavoro, devi cercare parcheggio, fare la fila
+                        per i macchinari, cambiarti in uno spogliatoio caotico e poi passare due ore ad allenarti senza
+                        una vera guida.
+                    </p>
+                    <p>
+                        <strong class="font-semibold text-white">Non è colpa tua se non sei costante.</strong> Le
+                        palestre tradizionali sono progettate per la massa, non per l'efficienza. Tu hai bisogno di una
+                        soluzione che si adatti alla tua agenda, non il contrario. Hai bisogno di massimizzare il ROI
+                        del tuo tempo libero.
+                    </p>
+                </div>
+
+                <!-- Pain point comparisons cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-center">
+                    <div class="p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+                        <div class="text-purple-400 text-3xl font-heading font-black mb-2">90 Min</div>
+                        <div class="text-sm text-gray-300 font-medium mb-1">Allenamento Medio</div>
+                        <p class="text-xs text-gray-500">Tra attese dei macchinari e recuperi passivi prolungati.</p>
+                    </div>
+                    <div class="p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+                        <div class="text-purple-400 text-3xl font-heading font-black mb-2">Massa</div>
+                        <div class="text-sm text-gray-300 font-medium mb-1">Zero Personalizzazione</div>
+                        <p class="text-xs text-gray-500">Schede fotocopia fatte senza misurare i tuoi dati reali.</p>
+                    </div>
+                    <div class="p-6 bg-white/[0.01] border border-white/5 rounded-2xl">
+                        <div class="text-purple-400 text-3xl font-heading font-black mb-2">Carico</div>
+                        <div class="text-sm text-gray-300 font-medium mb-1">Stress Articolare</div>
+                        <p class="text-xs text-gray-500">Pesi elevati che rischiano di infiammare tendini e schiena.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 3: LA SOLUZIONE (Metodo) -->
+        <section id="metodo"
+            class="w-full bg-black/35 border-y border-white/5 py-28 lg:py-36 px-6 relative overflow-hidden">
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/20 to-transparent">
+            </div>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-20 lg:mb-28">
+                    <span
+                        class="text-brand-cyan font-heading font-bold text-xs tracking-[0.2em] uppercase mb-4 block">Il
+                        Metodo BodyReset</span>
+                    <h2 class="text-3xl lg:text-5xl font-heading font-black text-white">Scienza ed Efficienza al tuo
+                        Servizio.</h2>
+                </div>
+
+                <!-- Griglia a 2 Colonne -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+                    <!-- Card EMS -->
+                    <div
+                        class="bg-brand-card/70 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/5 shadow-2xl hover:border-purple-400/40 hover:bg-brand-card transition-all duration-500 relative group flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-brand-cyan/10 flex items-center justify-center mb-8 border border-brand-cyan/20 group-hover:scale-110 group-hover:bg-brand-cyan/20 transition-all duration-500 shadow-[0_0_15px_rgba(116,83,153,0.1)]">
+                                <svg class="w-8 h-8 text-brand-cyan" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-heading font-bold text-white mb-5 leading-tight">
+                                L'Allenamento del Futuro:<br />
+                                <span class="text-gray-400 font-light">20 Minuti = 2 Ore di Sala Pesi</span>
+                            </h3>
+                            <p class="text-gray-400 font-body leading-relaxed font-light text-base lg:text-lg">
+                                Dimentica i bilancieri e il sovraccarico sulle ginocchia. Con la tecnologia EMS
+                                (Elettrostimolazione Muscolare) avanzata di BodyReset, andiamo a reclutare <strong
+                                    class="text-gray-200 font-semibold">oltre 300 muscoli contemporaneamente</strong>,
+                                raggiungendo le fibre più profonde in modo totalmente sicuro e senza stress articolare.
+                                Sudi, lavori duro, e in 20 minuti hai completato l'equivalente di un intero workout
+                                tradizionale.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center gap-3 text-xs text-brand-cyan font-heading font-bold tracking-wider uppercase">
+                            <span>Tecnologia EMS Certificata</span>
+                            <span>•</span>
+                            <span>100% Sicuro</span>
+                        </div>
+                    </div>
+
+                    <!-- Card BIA -->
+                    <div
+                        class="bg-brand-card/70 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/5 shadow-2xl hover:border-brand-cyan/40 hover:bg-brand-card transition-all duration-500 relative group flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-brand-cyan/10 flex items-center justify-center mb-8 border border-brand-cyan/20 group-hover:scale-110 group-hover:bg-brand-cyan/20 transition-all duration-500 shadow-[0_0_15px_rgba(116,83,153,0.1)]">
+                                <svg class="w-8 h-8 text-brand-cyan" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-heading font-bold text-white mb-5 leading-tight">
+                                Noi Non "Supponiamo".<br />
+                                <span class="text-gray-400 font-light">Noi Misuriamo: L'Analisi BIA</span>
+                            </h3>
+                            <p class="text-gray-400 font-body leading-relaxed font-light text-base lg:text-lg">
+                                Da BodyReset non si inizia ad allenarsi "alla cieca". Il tuo percorso inizia sempre nel
+                                nostro studio di consulenza clinica con l'Analisi Corporea BIA. Misuriamo con <strong
+                                    class="text-gray-200 font-semibold">precisione millimetrica la tua massa magra, la
+                                    massa grassa, la ritenzione idrica</strong> e il metabolismo basale. Solo
+                                analizzando questi dati clinici il tuo Trainer configurerà la macchina in modo
+                                chirurgico per il tuo corpo. Se non misuri, non puoi migliorare.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-8 pt-6 border-t border-white/5 flex items-center gap-3 text-xs text-brand-cyan font-heading font-bold tracking-wider uppercase">
+                            <span>Bioimpedenziometria Clinica</span>
+                            <span>•</span>
+                            <span>Dati in tempo reale</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 4: L'OFFERTA DI INGRESSO (Black Card) -->
+        <section id="offerta" class="w-full bg-brand-dark py-28 lg:py-36 px-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- Premium Glossy Black Card Container -->
+                <div
+                    class="relative bg-gradient-to-br from-[#1E1E21] to-[#0A0A0B] rounded-[2.5rem] p-8 sm:p-12 lg:p-16 border border-brand-cyan/20 shadow-[0_0_50px_rgba(116,83,153,0.06)] overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-80 h-80 bg-brand-cyan/10 rounded-full mix-blend-screen filter blur-[90px] pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute -bottom-20 -left-20 w-80 h-80 bg-brand-purple/10 rounded-full mix-blend-screen filter blur-[90px] pointer-events-none">
+                    </div>
+
+                    <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12">
+                        <div class="w-full lg:w-2/3">
+                            <span
+                                class="text-brand-cyan font-heading font-bold text-xs tracking-[0.2em] uppercase mb-3 block">Offerta
+                                a zero attrito</span>
+                            <h2 class="text-3xl lg:text-4.5xl font-heading font-black text-white mb-6 leading-tight">
+                                Vivi l'Esperienza Premium BodyReset.</h2>
+                            <p class="text-gray-400 font-body text-base lg:text-lg font-light mb-8">
+                                Non ti chiediamo di acquistare un abbonamento a scatola chiusa. Entra nel nostro club
+                                esclusivo, analizza i tuoi dati e tocca con mano l'efficienza del metodo.
+                            </p>
+
+                            <ul class="space-y-4 mb-10">
+                                <li class="flex items-start gap-4">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-brand-cyan/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-300 font-body text-sm sm:text-base"><strong
+                                            class="text-white font-medium">Accoglienza Dedicata:</strong> Tutto è pronto
+                                        per te. Nessuna attesa.</span>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-brand-cyan/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-300 font-body text-sm sm:text-base"><strong
+                                            class="text-white font-medium">Esame Clinico BIA:</strong> Lettura completa
+                                        dei tuoi valori corporei.</span>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-brand-cyan/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <svg class="w-4 h-4 text-brand-cyan" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-300 font-body text-sm sm:text-base"><strong
+                                            class="text-white font-medium">Sessione EMS 1-to-1 (20 Min):</strong> Il tuo
+                                        primo allenamento ad altissima efficienza.</span>
+                                </li>
+                            </ul>
+
+                            <div
+                                class="flex items-center gap-2 text-xs text-brand-cyan font-heading font-semibold tracking-wider uppercase mb-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
+                                <span>⚠️ I posti mensili per le prove sono limitati.</span>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-1/3 flex justify-center">
+                            <!-- WhatsApp CTA Link -->
+                            <a href="https://wa.me/391234567890?text=Ciao%20BodyReset,%20vorrei%20prenotare%20la%20mia%20prova%20con%20analisi%20BIA."
+                                target="_blank"
+                                class="w-full py-5 px-6 bg-brand-cyan hover:bg-brand-cyanDark text-white font-heading font-black text-sm sm:text-base tracking-wider uppercase rounded-xl shadow-[0_0_25px_rgba(116,83,153,0.35)] hover:shadow-[0_0_40px_rgba(116,83,153,0.7)] hover:-translate-y-0.5 transition-all duration-300 text-center flex flex-col items-center justify-center gap-2 group">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                        <path
+                                            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.466L0 24zm6.59-4.846c1.6.95 3.16 1.448 4.743 1.449 5.48.002 9.932-4.448 9.935-9.93.001-2.653-1.03-5.148-2.905-7.025-1.875-1.876-4.374-2.91-7.028-2.911-5.482 0-9.938 4.453-9.941 9.937-.001 1.706.452 3.373 1.311 4.863l-.997 3.64 3.753-.984zm11.233-6.974c-.3-.15-1.777-.875-2.046-.975-.27-.1-.466-.15-.662.15-.196.3-.76.975-.932 1.175-.172.2-.343.225-.643.075-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.082-.176-.3-.019-.462.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.662-1.597-.907-2.185-.238-.574-.48-.496-.662-.505-.17-.009-.365-.01-.56-.01-.196 0-.514.073-.784.37-.27.3-1.03 1.002-1.03 2.443s1.047 2.83 1.194 3.03c.147.2 2.062 3.148 4.996 4.413.698.301 1.243.482 1.668.617.7.223 1.337.192 1.84.117.562-.083 1.777-.726 2.027-1.427.25-.7.25-1.3.175-1.427-.075-.125-.27-.2-5.7-.35z" />
+                                    </svg>
+                                    <span>Fissa la Tua Prova</span>
+                                </div>
+                                <span
+                                    class="text-[10px] font-normal opacity-85 normal-case font-body tracking-normal">Via
+                                    WhatsApp - Risposta rapida</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 5: FAQ (Interactive Accordions) -->
+        <section id="faq" class="w-full bg-[#121213] py-28 px-6 border-t border-white/5">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-3xl lg:text-4xl font-heading font-black text-white">Domande Frequenti.</h2>
+                    <p class="text-gray-400 font-body mt-4">Tutto quello che devi sapere prima di entrare in studio.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Accordion Item 1 -->
+                    <div
+                        class="faq-item bg-brand-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10">
+                        <button
+                            class="faq-toggle w-full p-6 lg:p-8 flex justify-between items-center text-left focus:outline-none">
+                            <span class="text-base sm:text-lg font-heading font-bold text-white pr-4">
+                                <span class="text-brand-cyan mr-2">Q:</span> 20 minuti non sono troppo pochi per avere
+                                risultati reali?
+                            </span>
+                            <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 lg:px-8">
+                            <p class="text-gray-400 font-body font-light text-sm sm:text-base leading-relaxed pl-7">
+                                <strong class="text-white font-medium">A: Assolutamente no.</strong> L'EMS lavora
+                                reclutando le fibre muscolari profonde simultaneamente, cosa impossibile con i pesi
+                                tradizionali. L'intensità del lavoro è massima: il giorno dopo percepirai chiaramente
+                                l'efficacia della sessione.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div
+                        class="faq-item bg-brand-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10">
+                        <button
+                            class="faq-toggle w-full p-6 lg:p-8 flex justify-between items-center text-left focus:outline-none">
+                            <span class="text-base sm:text-lg font-heading font-bold text-white pr-4">
+                                <span class="text-brand-cyan mr-2">Q:</span> C'è il rischio di infortunarsi o
+                                sovraccaricare le articolazioni?
+                            </span>
+                            <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 lg:px-8">
+                            <p class="text-gray-400 font-body font-light text-sm sm:text-base leading-relaxed pl-7">
+                                <strong class="text-white font-medium">A: Zero rischi.</strong> L'allenamento BodyReset
+                                è al 100% "Joint-Friendly" (sicuro per le articolazioni) perché lavoriamo a corpo libero
+                                senza sollevare carichi pesanti. È ideale anche per chi gioca a padel/tennis e vuole
+                                rafforzare la muscolatura.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div
+                        class="faq-item bg-brand-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/10">
+                        <button
+                            class="faq-toggle w-full p-6 lg:p-8 flex justify-between items-center text-left focus:outline-none">
+                            <span class="text-base sm:text-lg font-heading font-bold text-white pr-4">
+                                <span class="text-brand-cyan mr-2">Q:</span> Devo portare l'attrezzatura sportiva da
+                                casa?
+                            </span>
+                            <svg class="faq-icon w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 lg:px-8">
+                            <p class="text-gray-400 font-body font-light text-sm sm:text-base leading-relaxed pl-7">
+                                <strong class="text-white font-medium">A: Non serve quasi nulla.</strong> Ti forniremo
+                                noi l'abbigliamento tecnico specifico per l'allenamento EMS. Dovrai solo portare la tua
+                                energia e presentarti in studio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-brand-dark py-20 px-6 border-t border-white/10 relative pb-36 lg:pb-20 mt-auto">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- Footer Icon Logo -->
+            <div class="flex justify-center mb-10">
+                <img src="assets/logo.png" alt="BodyReset Mark" loading="lazy" class="w-32 h-32 md:w-48 md:h-48 opacity-50 hover:opacity-100 transition-opacity duration-300 object-contain transform scale-125">
+            </div>
+            <h2 class="text-3xl lg:text-4xl font-heading font-black text-white mb-6">
+                Sei pronto a rivoluzionare il tuo allenamento?
+            </h2>
+            <p class="text-gray-400 font-body text-lg font-light mb-10 max-w-2xl mx-auto">
+                Non rimandare ancora. Il tempo che dedichi a te stesso è il miglior investimento possibile.
+            </p>
+
+            <a href="https://wa.me/391234567890?text=Ciao%20BodyReset,%20vorrei%20prenotare%20la%20mia%20prova%20con%20analisi%20BIA."
+                target="_blank"
+                class="inline-block px-10 py-5 bg-transparent border-2 border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-white font-heading font-extrabold text-sm sm:text-base tracking-wider uppercase rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(116,83,153,0.4)] mb-16">
+                👉 Prenota la Tua Analisi BIA Ora
+            </a>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-400 font-body text-sm border-t border-white/10 pt-16 text-left max-w-2xl mx-auto">
+                <div class="flex gap-4 items-start">
+                    <span
+                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-brand-cyan">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </span>
+                    <div>
+                        <h4 class="font-heading font-bold text-white text-base mb-1">BodyReset Studio</h4>
+                        <p class="text-gray-400 leading-relaxed font-light">Via San Paolo, Contrada Pretaro<br />66023 – Francavilla al Mare (CH)<br />All'interno del Blanco Padel Club</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-start">
+                    <span
+                        class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-brand-cyan">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                            </path>
+                        </svg>
+                    </span>
+                    <div>
+                        <h4 class="font-heading font-bold text-white text-base mb-1">Contatti & Info</h4>
+                        <p class="text-gray-400 leading-relaxed font-light">WhatsApp: +39 123 456 7890<br />Ampio
+                            parcheggio gratuito riservato.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-gray-600 text-xs font-body mt-16 pt-8 border-t border-white/5">
+                &copy; 2026 BodyReset. Tutti i diritti riservati.
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE CTA (Appare solo su Smartphone, fissata in basso) -->
+    <div
+        class="fixed bottom-0 left-0 w-full p-4 bg-brand-dark/85 backdrop-blur-md border-t border-white/10 z-50 lg:hidden">
+        <a href="https://wa.me/391234567890?text=Ciao%20BodyReset,%20vorrei%20prenotare%20la%20mia%20prova%20con%20analisi%20BIA."
+            target="_blank"
+            class="w-full flex items-center justify-center gap-2 py-4 bg-brand-cyan text-white font-heading font-black tracking-wide uppercase text-sm rounded-xl shadow-[0_0_20px_rgba(116,83,153,0.4)]">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.466L0 24zm6.59-4.846c1.6.95 3.16 1.448 4.743 1.449 5.48.002 9.932-4.448 9.935-9.93.001-2.653-1.03-5.148-2.905-7.025-1.875-1.876-4.374-2.91-7.028-2.911-5.482 0-9.938 4.453-9.941 9.937-.001 1.706.452 3.373 1.311 4.863l-.997 3.64 3.753-.984zm11.233-6.974c-.3-.15-1.777-.875-2.046-.975-.27-.1-.466-.15-.662.15-.196.3-.76.975-.932 1.175-.172.2-.343.225-.643.075-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.082-.176-.3-.019-.462.13-.61.135-.133.3-.35.45-.525.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.525-.075-.15-.662-1.597-.907-2.185-.238-.574-.48-.496-.662-.505-.17-.009-.365-.01-.56-.01-.196 0-.514.073-.784.37-.27.3-1.03 1.002-1.03 2.443s1.047 2.83 1.194 3.03c.147.2 2.062 3.148 4.996 4.413.698.301 1.243.482 1.668.617.7.223 1.337.192 1.84.117.562-.083 1.777-.726 2.027-1.427.25-.7.25-1.3.175-1.427-.075-.125-.27-.2-5.7-.35z" />
+            </svg>
+            Prenota su WhatsApp
+        </a>
+    </div>
+
+    <!-- Script JavaScript per interattività avanzata -->
+    <script>
+        // 1. FAQ Accordion Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const item = toggle.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Chiudi eventuali altre FAQ aperte
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Toggle l'item cliccato
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Apri il primo accordion di default
+        if (faqToggles.length > 0) {
+            faqToggles[0].parentElement.classList.add('active');
+        }
+
+        // 2. Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconPath = document.getElementById('menu-icon-path');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                // Apri menu
+                mobileMenu.classList.remove('translate-x-full');
+                // Cambia icona ad 'X'
+                menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                document.body.classList.add('overflow-hidden'); // Blocca lo scroll del body
+            } else {
+                // Chiudi menu
+                mobileMenu.classList.add('translate-x-full');
+                // Cambia icona a Hamburger
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Chiudi menu al click dei link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+
+        // 3. Sticky Header Logic
+        const header = document.getElementById('main-header');
+        const headerLogo = document.getElementById('header-logo');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Header styles (shrink padding Y, increase padding X to squeeze elements)
+                header.classList.remove('py-6', 'px-6', 'lg:px-12', 'bg-transparent');
+                header.classList.add('py-3', 'px-10', 'lg:px-32', 'bg-brand-dark/90', 'backdrop-blur-md', 'shadow-[0_10px_30px_rgba(0,0,0,0.5)]', 'border-b', 'border-white/5');
+                
+                // Logo styles (shrink)
+                if (headerLogo) {
+                    headerLogo.classList.remove('scale-[2.5]', 'lg:scale-[3]');
+                    headerLogo.classList.add('scale-[1.8]', 'lg:scale-[2.2]');
+                }
+            } else {
+                // Header styles (restore)
+                header.classList.add('py-6', 'px-6', 'lg:px-12', 'bg-transparent');
+                header.classList.remove('py-3', 'px-10', 'lg:px-32', 'bg-brand-dark/90', 'backdrop-blur-md', 'shadow-[0_10px_30px_rgba(0,0,0,0.5)]', 'border-b', 'border-white/5');
+                
+                // Logo styles (restore)
+                if (headerLogo) {
+                    headerLogo.classList.add('scale-[2.5]', 'lg:scale-[3]');
+                    headerLogo.classList.remove('scale-[1.8]', 'lg:scale-[2.2]');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
