@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - BodyReset</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0b',
+                            cyan: '#00f0ff',
+                            purple: '#745399',
+                            card: '#121213'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0b; color: #fff; }
+        .prose a { color: #00f0ff; text-decoration: none; }
+        .prose a:hover { text-decoration: underline; }
+        .prose h1, .prose h2, .prose h3 { color: #fff; font-family: 'Outfit', sans-serif; }
+        .prose p, .prose li { color: #9ca3af; font-family: 'Inter', sans-serif; }
+        .prose strong { color: #fff; }
+    </style>
+</head>
+<body class="font-body antialiased relative selection:bg-brand-cyan selection:text-brand-dark min-h-screen flex flex-col">
+    <!-- Navbar simplificata -->
+    <header class="w-full fixed top-0 z-50 transition-all duration-300 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index_en.html" class="flex items-center gap-3 group">
+                <img src="assets/logo.png" alt="BodyReset Logo" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
+                <span class="font-heading font-black text-2xl tracking-tight text-white">BODY<span class="text-brand-cyan">RESET</span></span>
+            </a>
+            <a href="index_en.html" class="text-sm font-medium text-gray-400 hover:text-white transition">Back to Home</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto bg-brand-card/70 border border-white/10 rounded-3xl p-8 lg:p-12 shadow-2xl prose prose-invert">
+            <h1 class="text-3xl font-black mb-8 border-b border-white/10 pb-4">Terms and Conditions</h1>
+            
+            <p><strong>Last updated:</strong> [DATE]</p>
+            
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using this website and the services offered by <strong>[COMPANY NAME]</strong>, you agree to be bound by these Terms and Conditions.</p>
+
+            <h2>2. Company Information</h2>
+            <p><strong>[COMPANY NAME]</strong><br>
+            Registered office: [REGISTERED ADDRESS]<br>
+            VAT Number: [VAT NUMBER]</p>
+
+            <h2>3. Use of Service</h2>
+            <p>EMS training services and consultations that can be booked via the site are subject to availability. Bookings made via WhatsApp are considered confirmed only after our explicit response.</p>
+
+            <h2>4. Medical Disclaimer</h2>
+            <p>The contents on the site are for informational purposes. EMS training requires the absence of specific clinical contraindications (e.g., pacemaker, pregnancy). It is the user's responsibility to inform trainers of their health status before starting.</p>
+
+            <h2>5. Applicable Law and Jurisdiction</h2>
+            <p>These conditions are governed by Italian law. Any dispute will be the exclusive competence of the Court of [JURISDICTION CITY].</p>
+        
+        </div>
+    </main>
+
+    <footer class="w-full bg-brand-dark py-8 px-6 border-t border-white/10 text-center text-gray-600 text-xs font-body">
+        &copy; 2026 BodyReset. All rights reserved.
+    </footer>
+</body>
+</html>

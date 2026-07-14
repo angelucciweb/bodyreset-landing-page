@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termini e Condizioni - BodyReset</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0b',
+                            cyan: '#00f0ff',
+                            purple: '#745399',
+                            card: '#121213'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0b; color: #fff; }
+        .prose a { color: #00f0ff; text-decoration: none; }
+        .prose a:hover { text-decoration: underline; }
+        .prose h1, .prose h2, .prose h3 { color: #fff; font-family: 'Outfit', sans-serif; }
+        .prose p, .prose li { color: #9ca3af; font-family: 'Inter', sans-serif; }
+        .prose strong { color: #fff; }
+    </style>
+</head>
+<body class="font-body antialiased relative selection:bg-brand-cyan selection:text-brand-dark min-h-screen flex flex-col">
+    <!-- Navbar simplificata -->
+    <header class="w-full fixed top-0 z-50 transition-all duration-300 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="assets/logo.png" alt="BodyReset Logo" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
+                <span class="font-heading font-black text-2xl tracking-tight text-white">BODY<span class="text-brand-cyan">RESET</span></span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-gray-400 hover:text-white transition">Torna alla Home</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto bg-brand-card/70 border border-white/10 rounded-3xl p-8 lg:p-12 shadow-2xl prose prose-invert">
+            <h1 class="text-3xl font-black mb-8 border-b border-white/10 pb-4">Termini e Condizioni</h1>
+            
+            <p><strong>Ultimo aggiornamento:</strong> [DATA]</p>
+            
+            <h2>1. Accettazione dei Termini</h2>
+            <p>Utilizzando questo sito web e i servizi offerti da <strong>[NOME AZIENDA]</strong>, accetti di essere vincolato dai presenti Termini e Condizioni.</p>
+
+            <h2>2. Informazioni Aziendali</h2>
+            <p><strong>[NOME AZIENDA]</strong><br>
+            Sede legale: [INDIRIZZO SEDE LEGALE]<br>
+            P.IVA/C.F.: [PARTITA IVA]</p>
+
+            <h2>3. Utilizzo del Servizio</h2>
+            <p>I servizi di allenamento EMS e le consulenze prenotabili tramite il sito sono soggetti a disponibilità. Le prenotazioni effettuate tramite WhatsApp sono da considerarsi confermate solo dopo nostra esplicita risposta.</p>
+
+            <h2>4. Esclusione di Responsabilità Medica</h2>
+            <p>I contenuti presenti sul sito sono a scopo informativo. L'allenamento EMS richiede l'assenza di specifiche controindicazioni cliniche (es. pacemaker, gravidanza). È responsabilità dell'utente informare i trainer del proprio stato di salute prima di iniziare.</p>
+
+            <h2>5. Legge Applicabile e Foro Competente</h2>
+            <p>Le presenti condizioni sono regolate dalla legge italiana. Qualsiasi controversia sarà di competenza esclusiva del Foro di [CITTA' FORO COMPETENTE].</p>
+        
+        </div>
+    </main>
+
+    <footer class="w-full bg-brand-dark py-8 px-6 border-t border-white/10 text-center text-gray-600 text-xs font-body">
+        &copy; 2026 BodyReset. Tutti i diritti riservati.
+    </footer>
+</body>
+</html>
