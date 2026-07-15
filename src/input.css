@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar matching the dark/cyan premium aesthetic */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0D0D0E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #27272A;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4B2E83;
+}
+
+/* Custom styles for accordion transition */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-bottom: 1.5rem;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+    color: #745399;
+}
+
+/* Inner pages prose styling */
+body { background-color: #0D0D0E; color: #fff; }
+.prose a { color: #745399; text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.prose h1, .prose h2, .prose h3 { color: #fff; font-family: 'Outfit', sans-serif; }
+.prose p, .prose li { color: #9ca3af; font-family: 'Inter', sans-serif; }
+.prose strong { color: #fff; }
