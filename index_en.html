@@ -729,15 +729,17 @@
     </script>
 
     <!-- AOS Animation Library -->
-    <script defer src="assets/aos.js"></script>
+    <script src="assets/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            AOS.init({
-                once: true,
-                offset: 50,
-                duration: 800,
-                easing: 'ease-out-cubic',
-            });
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+        // Ricalcola le posizioni AOS dopo che tutte le immagini sono caricate
+        window.addEventListener('load', function() {
+            AOS.refresh();
         });
     </script>
 </body>
